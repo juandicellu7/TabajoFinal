@@ -1,0 +1,9 @@
+module AlmacenApp{
+    interface Almacen{
+        boolean guardarAlmacen(in long id_almacen, in wstring nombre, in wstring telefono, in wstring direccion, in wstring ciudad);
+        boolean actualizarAlmacen(in long id_almacen, in wstring nombre, in wstring telefono, in wstring direccion, in wstring ciudad);
+        boolean eliminarAlmacen(in long id_almacen);
+        wstring consultarAlmacen(in long id_almacen);
+        oneway void shoutdown();   
+    };
+};
