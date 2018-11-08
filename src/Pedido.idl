@@ -1,0 +1,9 @@
+module PedidoApp{
+    interface Pedido{
+        boolean guardarPedido(in long id_pedido, in wstring fecha, in wstring cantidad_producto, in wstring precio_unitario);
+        boolean actualizarPedido(in long id_pedido, in wstring fecha, in wstring cantidad_producto, in wstring precio_unitario);
+        boolean eliminarPedido(in long id_pedido);
+        wstring consultarPedido(in long id_pedido);
+        oneway void shoutdown();   
+    };
+};

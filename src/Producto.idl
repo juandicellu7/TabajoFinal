@@ -1,0 +1,10 @@
+module ProductoApp{
+    interface Producto{
+        boolean guardarProducto(in long id_producto, in wstring descripcion, in wstring cantidad_producto, in wstring precio);
+        boolean actualizarProducto(in long id_producto, in wstring descripcion, in wstring cantidad_producto, in wstring precio);
+        boolean eliminarProducto(in long id_producto);
+        wstring consultarProducto(in long id_producto);
+        oneway void shoutdown();   
+    };
+};
+

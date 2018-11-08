@@ -1,0 +1,9 @@
+module ClienteApp{
+    interface Cliente{
+        boolean guardarCliente(in long id_cliente, in wstring nombres, in wstring apellidos, in wstring numero_identificacion, in wstring genero, in wstring telefono, in wstring ciudad);
+        boolean actualizarCliente(in long id_cliente, in wstring nombres, in wstring apellidos, in wstring numero_identificacion, in wstring genero, in wstring telefono, in wstring ciudad);
+        boolean eliminarCliente(in long id_cliente);
+        wstring consultarCliente(in long id_cliente);
+        oneway void shoutdown();   
+    };
+};
