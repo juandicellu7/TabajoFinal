@@ -15,8 +15,8 @@ public class Almacen extends AlmacenApp.AlmacenPOA {
     public boolean guardarAlmacen(int id_almacen, String nombre, String telefono, String direccion, String ciudad) {
         boolean resultado = false;
         try {
-            String query = "Insert into almacen(id_almacen,nombre,direccion,telefono,ciudad)"
-                    + "values ('" + id_almacen + "','" + nombre + "','" + direccion + "','" + telefono + "','" + ciudad + "')";
+            String query = "Insert into almacen(id_almacen,nombre,telefono,direccion,ciudad)"
+                    + "values ('" + id_almacen + "','" + nombre + "','" + telefono + "','" + direccion + "','" + ciudad + "')";
             conex.conexion();
             Statement st = conex.conex.createStatement();
             int valor = st.executeUpdate(query);
@@ -37,7 +37,7 @@ public class Almacen extends AlmacenApp.AlmacenPOA {
     public boolean actualizarAlmacen(int id_almacen, String nombre, String telefono, String direccion, String ciudad) {
         boolean resultado = false;
         try {
-            String query ="Update almacen set nombre='" + nombre + "',telefono='" + telefono + "',telefono='" + telefono + "',ciudad='" + ciudad + "'"
+            String query ="Update almacen set nombre='" + nombre + "',telefono='" + telefono + "',direccion='" + direccion + "',ciudad='" + ciudad + "'"
                     + " Where id_almacen='" + id_almacen + "'";
             conex.conexion();
             Statement st = conex.conex.createStatement();
@@ -91,7 +91,7 @@ public class Almacen extends AlmacenApp.AlmacenPOA {
     public ResultSet cargarTablaAlmacen() {
         ResultSet resultado = null;
         try {
-            String query = "Select id_almacen,nombre,direccion,telefono,ciudad from Almacen";
+            String query = "Select id_almacen,nombre,telefono,direccion,ciudad from Almacen";
             conex.conexion();
             Statement st = conex.conex.createStatement();
             resultado = st.executeQuery(query);

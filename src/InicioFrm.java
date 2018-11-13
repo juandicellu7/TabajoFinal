@@ -46,6 +46,11 @@ public class InicioFrm extends javax.swing.JFrame {
         btnFactura.setText("FACTURA");
 
         btnAlmacen.setText("ALMACEN");
+        btnAlmacen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlmacenActionPerformed(evt);
+            }
+        });
 
         btnPedidos.setText("PEDIDOS");
         btnPedidos.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +109,12 @@ public class InicioFrm extends javax.swing.JFrame {
         verFormularioPedido.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnPedidosActionPerformed
+
+    private void btnAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlmacenActionPerformed
+        AlmacenFrm verFormularioAlmacen = new AlmacenFrm();
+        verFormularioAlmacen.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAlmacenActionPerformed
 
     /**
      * @param args the command line arguments

@@ -227,7 +227,7 @@ public class AlmacenFrm extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
          Almacen alm = new Almacen();
-        boolean resultado = alm.guardarAlmacen(Integer.parseInt(txtIdAlmacen.getText()), txtNombre.getText(), txtDireccion.getText(), txtTelefono.getText(), txtCiudad.getText());
+        boolean resultado = alm.guardarAlmacen(Integer.parseInt(txtIdAlmacen.getText()), txtNombre.getText(), txtTelefono.getText(),txtDireccion.getText(), txtCiudad.getText());
         if(resultado==true){
             JOptionPane.showMessageDialog(null, "Se guardo el Almacen");
             this.modeloTabla.getDataVector().clear();
@@ -239,7 +239,7 @@ public class AlmacenFrm extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
        Almacen alm = new Almacen();
-        boolean resultado = alm.actualizarAlmacen(Integer.parseInt(txtIdAlmacen.getText()), txtNombre.getText(), txtDireccion.getText(), txtTelefono.getText(), txtCiudad.getText());
+        boolean resultado = alm.actualizarAlmacen(Integer.parseInt(txtIdAlmacen.getText()), txtNombre.getText(),txtTelefono.getText(),txtDireccion.getText(), txtCiudad.getText());
         if(resultado==true){
             JOptionPane.showMessageDialog(null, "Se actualizo el cliente");
             this.modeloTabla.getDataVector().clear();
@@ -251,7 +251,7 @@ public class AlmacenFrm extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
                Almacen alm = new Almacen();
-         boolean resultado = alm.actualizarAlmacen(Integer.parseInt(txtIdAlmacen.getText()), txtNombre.getText(), txtDireccion.getText(), txtTelefono.getText(), txtCiudad.getText());
+         boolean resultado = alm.actualizarAlmacen(Integer.parseInt(txtIdAlmacen.getText()), txtNombre.getText(),txtTelefono.getText(),txtDireccion.getText(), txtCiudad.getText());
         if(resultado==true){
             JOptionPane.showMessageDialog(null, "Se consulto el Almacen");
             this.modeloTabla.getDataVector().clear();
