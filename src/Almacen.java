@@ -13,22 +13,74 @@ public class Almacen extends AlmacenApp.AlmacenPOA {
 
     @Override
     public boolean guardarAlmacen(int id_almacen, String nombre, String telefono, String direccion, String ciudad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean resultado = false;
+        try {
+            String query = "Insert into almacen(id_almacen,nombre,direccion,telefono,ciudad)"
+                    + "values ('" + id_almacen + "','" + nombre + "','" + direccion + "','" + telefono + "','" + ciudad + "')";
+            conex.conexion();
+            Statement st = conex.conex.createStatement();
+            int valor = st.executeUpdate(query);
+            if (valor > 0) {
+                resultado = true;
+            }
+            //se cierran todas la conecciones 
+            conex.conex.close();
+            st.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar" + e.getMessage());
+        }
+        return resultado;    
     }
 
     @Override
     public boolean actualizarAlmacen(int id_almacen, String nombre, String telefono, String direccion, String ciudad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean resultado = false;
+        try {
+            String query ="Update almacen set nombre='" + nombre + "',telefono='" + telefono + "',telefono='" + telefono + "',ciudad='" + ciudad + "'"
+                    + " Where id_almacen='" + id_almacen + "'";
+            conex.conexion();
+            Statement st = conex.conex.createStatement();
+            int valor = st.executeUpdate(query);
+            if (valor > 0) {
+                resultado = true;
+            }
+            //se cierran todas la conecciones 
+            conex.conex.close();
+            st.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar" + e.getMessage());
+        }
+        return resultado;  
     }
 
     @Override
     public boolean eliminarAlmacen(int id_almacen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+         boolean resultado = false;
+        try {
+            String query = "Delete from almacen where id_almacen= " + id_almacen;
+            conex.conexion();
+            Statement st = conex.conex.createStatement();
+            int valor = st.executeUpdate(query);
+            if (valor > 0) {
+                resultado = true;
+            }
+            //se cierran todas la conecciones 
+            conex.conex.close();
+            st.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar" + e.getMessage());
+        }
+        return resultado; 
+        }
 
     @Override
     public String consultarAlmacen(int id_almacen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     Almacen objAlmacen = new Almacen();
+        JOptionPane.showMessageDialog(null, objAlmacen.consultarAlmacen(5));
+        return null;    
     }
 
     @Override
