@@ -5,9 +5,7 @@
  */
 public class InicioFrm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InicioFrm
-     */
+   
     public InicioFrm() {
         initComponents();
     }
@@ -45,6 +43,11 @@ public class InicioFrm extends javax.swing.JFrame {
         });
 
         btnFactura.setText("FACTURA");
+        btnFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturaActionPerformed(evt);
+            }
+        });
 
         btnAlmacen.setText("ALMACEN");
         btnAlmacen.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +128,12 @@ public class InicioFrm extends javax.swing.JFrame {
         verFormularioAlmacen.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAlmacenActionPerformed
+
+    private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
+       FacturaFrm verFormularioFactura = new FacturaFrm();
+        verFormularioFactura.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnFacturaActionPerformed
 
     /**
      * @param args the command line arguments

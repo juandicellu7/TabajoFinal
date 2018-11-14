@@ -5,8 +5,6 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import org.omg.CORBA.ORB;
 
-
-
 /**
  *
  * @author juanflorez

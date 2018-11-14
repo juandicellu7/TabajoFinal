@@ -1,20 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author juanflorez
  */
 public class FacturaFrm extends javax.swing.JFrame {
+    
+    private DefaultTableModel modeloTabla;
 
-    /**
-     * Creates new form FacturaFrm
-     */
+  
     public FacturaFrm() {
+         modeloTabla = new DefaultTableModel(null, getColumn());
         initComponents();
+        cargarTabla();
+        Pedido objPedido = new Pedido();
+    }
+    
+     private String[] getColumn(){
+        String columnas[] = new String[]{"id_factura"," id_pedido"," id_cliente"," id_producto","id_almacen","fecha"," detalle_factura","ciudad","cantidad_ordenada"," valor_venta"};
+        return columnas;
+      }
+     
+     private void cargarTabla(){
+       Factura objFactura = new Factura();
+        ResultSet resultado = objFactura.cargarTablaFactura();
+        try {
+            Object datos[] = new Object[10];
+            while (resultado.next()){
+                for(int i=0; i<10; i++){
+                    datos[i] = resultado.getObject(i+1);
+                }
+                modeloTabla.addRow(datos);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error " + e.getMessage());
+        }
     }
 
     /**
@@ -26,21 +47,294 @@ public class FacturaFrm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtIdFactura = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtIdPedido = new javax.swing.JTextPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtIdCliente = new javax.swing.JTextPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtIdProducto = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtIdAlmacen = new javax.swing.JTextPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtFecha = new javax.swing.JTextPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        txtDetalleFactura = new javax.swing.JTextPane();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        txtCiudad = new javax.swing.JTextPane();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        txtCantidadOrdenada = new javax.swing.JTextPane();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        txtValorVenta = new javax.swing.JTextPane();
+        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTable1.setModel(modeloTabla);
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel1.setText("Id_Factura");
+
+        jLabel2.setText("Id_Pedido");
+
+        jLabel3.setText("Id_Cliente");
+
+        jLabel4.setText("Id_Producto");
+
+        jLabel5.setText("Id_Almacen");
+
+        jLabel6.setText("Fecha");
+
+        jLabel7.setText("Detalle_Factura");
+
+        jLabel8.setText("Ciudad");
+
+        jLabel9.setText("Cantidad_Ordenada");
+
+        jLabel10.setText("Valor_Venta");
+
+        jScrollPane2.setViewportView(txtIdFactura);
+
+        jScrollPane3.setViewportView(txtIdPedido);
+
+        jScrollPane4.setViewportView(txtIdCliente);
+
+        jScrollPane5.setViewportView(txtIdProducto);
+
+        jScrollPane6.setViewportView(txtIdAlmacen);
+
+        jScrollPane7.setViewportView(txtFecha);
+
+        jScrollPane8.setViewportView(txtDetalleFactura);
+
+        jScrollPane9.setViewportView(txtCiudad);
+
+        jScrollPane10.setViewportView(txtCantidadOrdenada);
+
+        jScrollPane11.setViewportView(txtValorVenta);
+
+        btnGuardar.setText("GUARDAR");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("ELIMINAR");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnConsultar.setText("CONSULTAR");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnInicio.setText("VOLVER AL INICIO");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("FACTURA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane10)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGuardar)
+                            .addComponent(btnActualizar))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInicio)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEliminar)
+                                .addGap(50, 50, 50)
+                                .addComponent(btnConsultar)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnConsultar))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnActualizar)
+                            .addComponent(btnInicio))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(21, 21, 21)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(253, 253, 253)
+                                .addComponent(jLabel7)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        Factura fac = new Factura();
+        boolean resultado = fac.guardarFactura(Integer.parseInt(txtIdFactura.getText()), txtIdPedido.getText(), txtIdCliente.getText(),  txtIdProducto.getText(),  txtIdAlmacen.getText(),  txtFecha.getText(),  txtDetalleFactura.getText(),  txtCiudad.getText(),  txtCantidadOrdenada.getText(),  txtValorVenta.getText());
+        if(resultado==true){
+            JOptionPane.showMessageDialog(null, "Se guardo la factura");
+            this.modeloTabla.getDataVector().clear();
+            cargarTabla();
+        }else{
+            JOptionPane.showMessageDialog(null, "No se guardo la factura");
+        }  
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+         Factura fac = new Factura();
+        boolean resultado = fac.actualizarFactura(Integer.parseInt(txtIdFactura.getText()), txtIdPedido.getText(), txtIdCliente.getText(),  txtIdProducto.getText(),  txtIdAlmacen.getText(),  txtFecha.getText(),  txtDetalleFactura.getText(),  txtCiudad.getText(),  txtCantidadOrdenada.getText(),  txtValorVenta.getText());
+        if(resultado==true){
+            JOptionPane.showMessageDialog(null, "Se actualizar la factura");
+            this.modeloTabla.getDataVector().clear();
+            cargarTabla();
+        }else{
+            JOptionPane.showMessageDialog(null, "No se actualizar la factura");
+        }  
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        Factura fac = new Factura();
+         boolean resultado = fac.eliminarFactura(Integer.parseInt(txtIdFactura.getText()));
+        if(resultado==true){
+            JOptionPane.showMessageDialog(null, "Se elimino la factura");
+            this.modeloTabla.getDataVector().clear();
+            cargarTabla();
+        }else{
+            JOptionPane.showMessageDialog(null, "No se elimino la factura");
+        } 
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+         InicioFrm verFormularioInicio = new InicioFrm();
+        verFormularioInicio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        Factura objFactura = new Factura();
+        JOptionPane.showMessageDialog(null, objFactura.consultarFactura(1));
+
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +372,43 @@ public class FacturaFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextPane txtCantidadOrdenada;
+    private javax.swing.JTextPane txtCiudad;
+    private javax.swing.JTextPane txtDetalleFactura;
+    private javax.swing.JTextPane txtFecha;
+    private javax.swing.JTextPane txtIdAlmacen;
+    private javax.swing.JTextPane txtIdCliente;
+    private javax.swing.JTextPane txtIdFactura;
+    private javax.swing.JTextPane txtIdPedido;
+    private javax.swing.JTextPane txtIdProducto;
+    private javax.swing.JTextPane txtValorVenta;
     // End of variables declaration//GEN-END:variables
 }
