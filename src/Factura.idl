@@ -1,0 +1,9 @@
+module FacturaApp{
+    interface Factura{
+        boolean guardarFactura(in long id_factura, in wstring id_pedido,in wstring id_cliente,in wstring id_producto,in wstring id_almacen, in wstring fecha, in wstring detalle_factura, in wstring ciudad, in wstring cantidad_ordenada, in wstring valor_venta);
+        boolean actualizarFactura(in long id_factura, in wstring id_pedido,in wstring id_cliente,in wstring id_producto,in wstring id_almacen, in wstring fecha, in wstring detalle_factura, in wstring ciudad, in wstring cantidad_ordenada, in wstring valor_venta);
+        boolean eliminarFactura(in long id_factura);
+        wstring consultarFactura(in long id_factura);
+        oneway void shoutdown();   
+    };
+};

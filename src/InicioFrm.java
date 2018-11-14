@@ -26,6 +26,7 @@ public class InicioFrm extends javax.swing.JFrame {
         btnFactura = new javax.swing.JButton();
         btnAlmacen = new javax.swing.JButton();
         btnPedidos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,24 +60,33 @@ public class InicioFrm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("INICIO");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPedidos)
-                    .addComponent(btnAlmacen)
-                    .addComponent(btnFactura)
-                    .addComponent(btnClientes)
-                    .addComponent(btnProducto))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnPedidos)
+                            .addComponent(btnAlmacen)
+                            .addComponent(btnFactura)
+                            .addComponent(btnClientes)
+                            .addComponent(btnProducto)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
                 .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(23, 23, 23)
                 .addComponent(btnProducto)
                 .addGap(18, 18, 18)
                 .addComponent(btnClientes)
@@ -157,5 +167,6 @@ public class InicioFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnFactura;
     private javax.swing.JButton btnPedidos;
     private javax.swing.JButton btnProducto;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,12 +15,12 @@ public class Producto extends ProductoApp.ProductoPOA {
     Conexion conex = new Conexion();
 
     @Override
-    public boolean guardarProducto(int idproducto, String descripcion, String cantidad_producto, String precio) {
+    public boolean guardarProducto(int id_producto, String descripcion, String cantidad_producto, String precio) {
 
         boolean resultado = false;
         try {
-            String query = "Insert into producto(idproducto,descripcion,cantidad_producto,precio)"
-                    + "values ('" + idproducto + "','" + descripcion + "','" + cantidad_producto + "','" + precio + "')";
+            String query = "Insert into producto(id_producto,descripcion,cantidad_producto,precio)"
+                    + "values ('" + id_producto + "','" + descripcion + "','" + cantidad_producto + "','" + precio + "')";
             conex.conexion();
             Statement st = conex.conex.createStatement();
             int valor = st.executeUpdate(query);
@@ -39,11 +39,11 @@ public class Producto extends ProductoApp.ProductoPOA {
     }
 
     @Override
-    public boolean actualizarProducto(int idproducto, String descripcion, String cantidad_producto, String precio) {
+    public boolean actualizarProducto(int id_producto, String descripcion, String cantidad_producto, String precio) {
         boolean resultado = false;
         try {
             String query = "Update producto set descripcion='" + descripcion + "',cantidad_producto='" + cantidad_producto + "',precio='" + precio + "'"
-                    + " Where id_producto='" + idproducto + "'";
+                    + " Where id_producto='" + id_producto + "'";
             conex.conexion();
             Statement st = conex.conex.createStatement();
             int valor = st.executeUpdate(query);
@@ -61,10 +61,10 @@ public class Producto extends ProductoApp.ProductoPOA {
     }
 
     @Override
-    public boolean eliminarProducto(int idproducto) {
+    public boolean eliminarProducto(int id_producto) {
         boolean resultado = false;
         try {
-            String query = "Delete from producto where idproducto= " + idproducto;
+            String query = "Delete from producto where idproducto= " + id_producto;
             conex.conexion();
             Statement st = conex.conex.createStatement();
             int valor = st.executeUpdate(query);
@@ -83,10 +83,10 @@ public class Producto extends ProductoApp.ProductoPOA {
     }
 
     @Override
-    public String consultarProducto(int idproducto) {
+    public String consultarProducto(int id_producto) {
         String resultado = "";
         try {
-            String query = "Select * from producto where idproducto = " + idproducto;
+            String query = "Select * from producto where id_producto = " + id_producto;
             conex.conexion();
             Statement st = conex.conex.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -112,7 +112,7 @@ public class Producto extends ProductoApp.ProductoPOA {
     public ResultSet cargarTablaProducto() {
         ResultSet resultado = null;
         try {
-            String query = "Select idproducto, descripcion, cantidad_producto, precio from producto";
+            String query = "Select id_producto, descripcion, cantidad_producto, precio from producto";
             conex.conexion();
             Statement st = conex.conex.createStatement();
             resultado = st.executeQuery(query);
