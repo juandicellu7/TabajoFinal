@@ -194,7 +194,7 @@ public class PedidoFrm extends javax.swing.JFrame {
                     .addComponent(btnInicio))
                 .addGap(18, 18, 18)
                 .addComponent(btnConsultar)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
